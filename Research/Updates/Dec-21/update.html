@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>December 2021</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div>
+    <h2>Updates</h2>
+    <hr>
+  </div>
+
+
+    <ul>
+      <li>Updated plotting functionality and plotted MVA responses:</li>
+      <p>Added a "genPlots" function that can take in an xml file with the plotting function arguments and plotbased   on that. It also saves the plots in an appropriate folder/file. A new folder gets created every new daythat the  plotting function gets used. This will help me keep old plots just in case, without having to run asorting  script like I was doing. It should speed up plotting and make it easier.</p>
+      <p>I used that functionality to plot the MVA method responses. Two of the methods, BDT and DNN_GPU are shown tothe right. The other two methods, Fisher and MLPBFGS had similar shapes to the BDT and DNN_GPU respectively.The separation isn't great for any of the methods. I could get TMVA's signal and background comparison plots, they look nicer and don't separate the background processes, but I have to rerun the training again and stop it before it goes to the application phase. Shouldn't take long, I just have to actually find the time to do it.</p>
+      <div style="width: 50%; float: left;">
+        <img src="img/BDT1_Full_SR_shape.png" width="600" height="400" />
+      </div>
+      <div style="width: 50%; float: left">
+        <img src="img/DNN_GPU_Full_SR_shape.png" width="600" height="400" />
+      </div>
+      <hr>
+      <li>I played around with the "optCutScan" function. It loops over the MVA output and looks for the highest significance value. The significance can be 
+        <ul style="font-size: larger; ">
+          <li>sgf0: \(eff \times \pi \)</li>
+          <li>sgf1: \(\frac{s}{\sqrt{s+b}}\)</li>
+        </ul>
+      </li>
+    </ul>
+
+
+      
+</body>
+</html>
