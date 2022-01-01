@@ -1,3 +1,6 @@
+/*body {
+  background-image: url('graphpaper2.png');
+}*/
 h1 {
     background-color: slategray;
     color: white;
@@ -6,5 +9,103 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
-p{
+
+.column4 {
+    float: left;
+    width: 25%;
+}
+
+.column2 {
+    float: left;
+    width: 50%;
+    /*flex: 50%;*/
+}
+
+/*.bannerbar {
+  top: 0;
+  bottom: 0;
+  position: sticky;
+  background-color: slategray;
+  color: white;
+  text-decoration: underline;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: left;
+  font-size: 50px;
+  margin-bottom: 10px;
+  padding: 10px;
+}*/
+
+.update_page {
+  font-size: 25px;
+}
+
+a.banner {
+  background-color: slategray;
+  color: white;
+}
+
+.links {
+  position: fixed;
+  float: right;
+  padding: 10px;
+  width: 262px;
+  height: 90%;
+  background-color: white;
+  color: slategray;
+  border: 2px solid slategray;
+}
+
+.link_group {
+  color: black;
+  background-color: rgb(178, 197, 216);
+  font-size: 20;
+  font-weight: bold;
+  padding: 3px;
+  border: 1px solid rgb(178, 197, 216);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 700px) {
+    .column4 {
+      width: 100%;
+    }
+    .column2 {
+      width: 100%;
+    }
+}
+
+ul.banner {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li.banner {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: slategray;
 }

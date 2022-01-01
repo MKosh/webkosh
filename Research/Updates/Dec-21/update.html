@@ -1,40 +1,106 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
   <title>December 2021</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
+
+
 <body>
-  <div>
-    <h2>Updates</h2>
-    <hr>
+
+  <div class="bannerbar">
+    <a class="banner" href="https://mkosh.github.io/webkosh/" style="text-decoration: none;">Mkosh</a>
   </div>
 
+  <div class="update_page">
+    <div>
+      <h2>Updates</h2>
+      <hr>
+    </div>
 
     <ul>
       <li>Updated plotting functionality and plotted MVA responses:</li>
-      <p>Added a "genPlots" function that can take in an xml file with the plotting function arguments and plotbased   on that. It also saves the plots in an appropriate folder/file. A new folder gets created every new daythat the  plotting function gets used. This will help me keep old plots just in case, without having to run asorting  script like I was doing. It should speed up plotting and make it easier.</p>
-      <p>I used that functionality to plot the MVA method responses. Two of the methods, BDT and DNN_GPU are shown tothe right. The other two methods, Fisher and MLPBFGS had similar shapes to the BDT and DNN_GPU respectively.The separation isn't great for any of the methods. I could get TMVA's signal and background comparison plots, they look nicer and don't separate the background processes, but I have to rerun the training again and stop it before it goes to the application phase. Shouldn't take long, I just have to actually find the time to do it.</p>
-      <div style="width: 50%; float: left;">
-        <img src="img/BDT1_Full_SR_shape.png" width="600" height="400" />
+      <p>Added a "genPlots" function that can take in an xml file with the plotting function arguments and plotbased
+        on that. It also saves the plots in an appropriate folder/file. A new folder gets created every new daythat
+        the plotting function gets used. This will help me keep old plots just in case, without having to run
+        asorting script like I was doing. It should speed up plotting and make it easier.</p>
+      <p>I used that functionality to plot the MVA method responses. Two of the methods, BDT and DNN_GPU are shown
+        tothe right. The other two methods, Fisher and MLPBFGS had similar shapes to the BDT and DNN_GPU
+        respectively.The separation isn't great for any of the methods. I could get TMVA's signal and background
+        comparison plots, they look nicer and don't separate the background processes, but I have to rerun the
+        training again and stop it before it goes to the application phase. Shouldn't take long, I just have to
+        actually find the time to do it.</p>
+
+      <div class="row">
+        <div class="column2">
+          <img src="img/BDT1_Full_SR_shape.png" width="400" height="400" />
+        </div>
+        <div class="column2">
+          <img src="img/DNN_GPU_Full_SR_shape.png" width="400" height="400" />
+        </div>
       </div>
-      <div style="width: 50%; float: left">
-        <img src="img/DNN_GPU_Full_SR_shape.png" width="600" height="400" />
+
+      <p>I got the normalizations to work by adding a year and luminosity branch to the final files and then doing a
+        TCut
+        <em>"((year==2016)*(lumin*genWeight*mcWeight*L1PFWeight*puWeight))+((year==2017)*(lumin*genWeight*mcWeight*L1PFWeight*puWeight))+((year==2018)*(lumin*genWeight*mcWeight*L1PFWeight*puWeight))"</em>.
+        That let me plot all three years at once. The image below should be clickable and should open a new tab with all
+        of the control plots. These plots are shown using a cut based selection. I made these before I figured out the
+        optimal cut scan function. For the next set of plots I'll cut on the BDT variable at it's optimal value for
+        maximizing signal to background acceptance and see how things look.</p>
+      <div>
+        <a href="img/control_plots.pdf" target="_blank">
+          <img src="img/c4_Run2_Full_SR.png" width="400" height="400" />
+        </a>
       </div>
       <hr>
-      <li>I played around with the "optCutScan" function. It loops over the MVA output and looks for the highest significance value. The significance can be 
-        <ul style="font-size: larger; ">
-          <li>sgf0: \(eff \times \pi \)</li>
-          <li>sgf1: \(\frac{s}{\sqrt{s+b}}\)</li>
+
+      <li>I played around with the "optCutScan" function. It loops over the MVA output and looks for the highest
+        significance value. The significance can be
+        <ul style="font-size: larger;">
+          <li style="margin-top: 5px; margin-bottom: 5px;">sgf0: \(\text{eff} \times \pi \)</li>
+          <li style="margin-bottom: 5px;">sgf1: \(\frac{\text{sig}}{\sqrt{\text{sig}+\text{bkg}}}\)</li>
+          <li style="margin-bottom: 5px;">sgf2: 95% CL</li>
+          <li>sgf3: \(\frac{\text{sig}}{\sqrt{\text{bkg}}} \)</li>
         </ul>
+
+        <p>So far I've plotted the optimal cuts for all four training methods, but only the first two significance
+          values. Here are a couple for reference.</p>
       </li>
+      <div class="row">
+        <div class="column4">
+          <img src="img/sgf0_BDT1.png" width="400" height="400" />
+        </div>
+        <div class="column4">
+          <img src="img/BDT_optCutScan_sgf1.png" width="400" height="400" />
+        </div>
+
+        <div class="column4">
+          <img src="img/sgf0_DNN_GPU_1.png" width="400" height="400" />
+        </div>
+        <div class="column4">
+          <img src="img/DNN_GPU_optCutScan_sgf1_1.png" width="400" height="400" />
+        </div>
+      </div>
+      <hr>
+      <li>Working on writing the introduction for my thesis. </li>
+      <li>I probably did other things, but I started working on this on the last day of the month, so I'm sure I'm just
+        forgetting things.</li>
     </ul>
 
+    <h2>Questions:</h2>
+    <hr>
 
-      
+    <ul>
+      <li>I think I'm almost ready to actually analyze the data.</li>
+    </ul>
+
+  </div>
 </body>
+
 </html>
