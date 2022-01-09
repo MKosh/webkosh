@@ -35,16 +35,160 @@
           </a>
         </div>
       </div>
+      <hr>
       <h4>Week of: Jan 9th, 2022</h4>
-      <li>I updated the plotting functions even more to make creating and saving plots even easier. Maybe one day I'll be done making changes to them. Here are the plots for each year.</li>
-      <li></li>
+      <li>I updated the plotting functions even more to make creating and saving plots even easier. Maybe one day I'll be done making changes to them. Here are the plots for each year, both from the individual year training, and from the full run 2 split apart. Background event numbers are close, generally off by 1-10 events per background type (they should match perfectly). These plots are are of the TMVA variables and the three best MVA method responses (based on AUC). BDT2 is just a normal BDT with optimized hyperparameters. BDTG is a BDT that uses a gradient boost algorithm. There's no scaling factors applied to anything, but the full run 2 matches fairly well without it. The individual years a little less so. I don't see anything obvious that would be causing the MVA responses to have such a dramatic mismatch. I also have the variable rankings listed below for BDT2 and BDTG. I can't find my ranking list for the DNN, I'll probably have to retrain to get the list again.</li>
+      <h5><a href="img/week_of_9th/2016_TMVA.pdf">Individual 2016</a></h5>
+      <h5><a href="img/week_of_9th/Run2_TMVA_2016.pdf">Run 2 2016</a></h5>
+      <h5><a href="img/week_of_9th/2017_TMVA.pdf">Individual 2017</a></h5>
+      <h5><a href="img/week_of_9th/Run2_TMVA_2017.pdf">Run 2 2017</a></h5>
+      <h5><a href="img/week_of_9th/2018_TMVA.pdf">Individual 2018</a></h5>
+      <h5><a href="img/week_of_9th/Run2_TMVA_2018.pdf">Run 2 2018</a></h5>
+      <h5><a href="img/week_of_9th/Run2_multiplot.pdf">Full Run 2</a></h5>
+        <div class="row">
+          <div class="column3">
+          <table width="100%">
+            <tr>
+              <th>BDT2 Variable</th>
+              <th>Rank</th>
+            </tr>
+            <tr>
+              <td>vbf_m</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>bos_PuppiAK8_tau2tau1</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>lep1_eta</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>bos_PuppiAK8_m_sd0_corr</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>zeppHad</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>zeppLep</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>vbf2_AK4_qgid</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>vbf1_AK4_qgid</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>vbf2_AK4_eta</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>vbf_deta</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>vbf_eta</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td>vbf1_AK4_eta</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>nJet30f</td>
+              <td>13</td>
+            </tr>
+            <tr>
+              <td>vbf1_AK4_pt</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td>vbf2_AK4_pt</td>
+              <td>15</td>
+            </tr>
+          </table>
+          </div>
+          <div class="column3">
+          <table width="100%">
+            <tr>
+              <th>BDTG Variable</th>
+              <th>Rank</th>
+            </tr>
+            <tr>
+              <td>bos_PuppiAK8_m_sd0_corr</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>zeppHad</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>bos_PuppiAK8_tau2tau1</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>lep1_eta</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>vbf_eta</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>zeppLep</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>vbf1_AK4_eta</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>vbf2_AK4_qgid</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>vbf2_AK4_eta</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>vbf_m</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>vbf_deta</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td>vbf1_AK4_qgid</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>nJet30f</td>
+              <td>13</td>
+            </tr>
+            <tr>
+              <td>vbf1_AK4_pt</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td>vbf2_AK4_pt</td>
+              <td>15</td>
+            </tr>
+          </table>
+        </div>
     </ul>
 
   </div>
 
+<!--
 
-
-
+-->
       
 </body>
 </html>
