@@ -38,15 +38,17 @@
       <hr>
       <h4>Week of: Jan 9th, 2022</h4>
       <li>I updated the plotting functions even more to make creating and saving plots even easier. Maybe one day I'll be done making changes to them. Here are the plots for each year, both from the individual year training, and from the full run 2 split apart. Background event numbers are close, generally off by 1-10 events per background type (they should match perfectly). These plots are are of the TMVA variables and the three best MVA method responses (based on AUC). BDT2 is just a normal BDT with optimized hyperparameters. BDTG is a BDT that uses a gradient boost algorithm. There's no scaling factors applied to anything, but the full run 2 matches fairly well without it. The individual years a little less so. I don't see anything obvious that would be causing the MVA responses to have such a dramatic mismatch. I also have the variable rankings listed below for BDT2 and BDTG. I can't find my ranking list for the DNN, I'll probably have to retrain to get the list again.</li>
-      <h5><a href="img/week_of_9th/2016_TMVA.pdf">Individual 2016</a></h5>
-      <h5><a href="img/week_of_9th/Run2_TMVA_2016.pdf">Run 2 2016</a></h5>
-      <h5><a href="img/week_of_9th/2017_TMVA.pdf">Individual 2017</a></h5>
-      <h5><a href="img/week_of_9th/Run2_TMVA_2017.pdf">Run 2 2017</a></h5>
-      <h5><a href="img/week_of_9th/2018_TMVA.pdf">Individual 2018</a></h5>
-      <h5><a href="img/week_of_9th/Run2_TMVA_2018.pdf">Run 2 2018</a></h5>
-      <h5><a href="img/week_of_9th/Run2_multiplot.pdf">Full Run 2</a></h5>
-        <div class="row">
-          <div class="column3">
+      <div class="row">
+        <div class="column3"><h5><a href="img/week_of_9th/2016_TMVA.pdf">Individual 2016</a></h5></div>
+        <div class="column3"><h5><a href="img/week_of_9th/Run2_TMVA_2016.pdf">Run 2 2016</a></h5></div>
+        <div class="column3"><h5><a href="img/week_of_9th/2017_TMVA.pdf">Individual 2017</a></h5></div>
+        <div class="column3"><h5><a href="img/week_of_9th/Run2_TMVA_2017.pdf">Run 2 2017</a></h5></div>
+        <div class="column3"><h5><a href="img/week_of_9th/2018_TMVA.pdf">Individual 2018</a></h5></div>
+        <div class="column3"><h5><a href="img/week_of_9th/Run2_TMVA_2018.pdf">Run 2 2018</a></h5></div>
+        <div class="column3"><h5><a href="img/week_of_9th/Run2_multiplot.pdf">Full Run 2</a></h5></div>
+      </div>
+      <div class="row">
+        <div class="column3">
           <table width="100%">
             <tr>
               <th>BDT2 Variable</th>
@@ -113,8 +115,8 @@
               <td>15</td>
             </tr>
           </table>
-          </div>
-          <div class="column3">
+        </div>
+        <div class="column3">
           <table width="100%">
             <tr>
               <th>BDTG Variable</th>
@@ -182,6 +184,43 @@
             </tr>
           </table>
         </div>
+        <div class="column3"></div>
+      </div>
+      <p>DNN_GPU doesn't give a variable ranking. MLPBFGS does, and performs roughly the same as DNN_GPU (or sometimes even better) based on AUC.</p>
+      <hr>
+      <h4>Week of: Jan 16th</h4>
+        <li><p> I need to figure out which weights need to be applied to the training step. There's options for both  overall weights applied per tree, and weight expressions that are applied on an event by event basis. Right now  there's just one called "mcWeight" which is xsec/nMCgen, and the overall background weight of 1.</p>
+          <p>There are multiple event weight branches, I just don't know which ones are actually supposed to be used, or  what some of them even are. Is there a reference for these (or any) datasets on the twiki? Here is the list of   the weights included in the ntuples: 
+            <ul>
+              <li>mcWeight :&emsp;xsec/nMCgen</li>
+              <li>aqgcWeight / nAqgcWeight : aqgcWeight[1000]</li>
+              <li>pdfWeight / nPdfWeight : pdfWeight[200]</li>
+              <li>scaleWeight / nScaleWeight : scaleWeight[200]</li>
+              <li>btagWeight_* : where * can be loose, medium, or tight followed by up, down, or nothing</li>
+              <li>genWeight</li>
+              <li>L1PFWeight : nothing, _Up, or _Down</li>
+              <li>LHEWeight : LHEWeight[1164]</li>
+              <li>lep*_idEffWeight : 1 or 2</li>
+              <li>lep*_trigEffWeight : 1 or 2</li>
+              <li>puWeight* : _Up, _down, or nothing</li>
+            </ul>
+          </p>
+        </li>
+        <li><h5>Links for plots using different sets of weights</h5>
+          <p>Using weights: <span style="color:darkred"> mcWeight, genWeight, L1PFWeight, btagWeight_loose, lep1_idEffWeight, lep1_trigEffWeight, lep2_idEffWeight, lep2_trigEffWeight</span></p>
+            <div class="row">
+              <div class="column3"><h5><a href="img/week_of_16th/">2016</a></h5></div>
+              <div class="column3"><h5><a href="img/week_of_16th/">2017</a></h5></div>
+              <div class="column3"><h5><a href="img/week_of_16th/">2018</a></h5></div>
+            </div>
+          <p>Using weights: <span style="color:darkred"> mcWeight, genWeight, L1PFWeight, btagWeight_loose</span></p>
+            <div class="row">
+              <div class="column3"><h5><a href="img/week_of_16th/">2016</a></h5></div>
+              <div class="column3"><h5><a href="img/week_of_16th/">2017</a></h5></div>
+              <div class="column3"><h5><a href="img/week_of_16th/">2018</a></h5></div>
+            </div>
+        </li>
+
     </ul>
 
   </div>
