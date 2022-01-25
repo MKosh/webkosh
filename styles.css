@@ -70,6 +70,27 @@ h1.banner {
   margin-top: 5px;
 }
 
+.inline_code {
+  font-family: 'Courier New', Courier, monospace;
+  /*background-color: lightgray;*/
+}
+
+.update {
+  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+  background-color: lightskyblue;
+}
+
+h5.link {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.link_list {
+
+}
+
 .row:after {
     content: "";
     display: table;

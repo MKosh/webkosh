@@ -21,175 +21,186 @@
 
     <ul>
       <h4>Jan 2nd, 2022</h4>
-      <li>I made another set of control plots using the BDT>0.028 cut. The MC events are an order of magnitude lower than it was with the cut based selection, and the data is an order of magnitude higher than the cut based selection. You can see those in the first set of plots. I also made a set of plots using both the selection cuts and the BDT cut, and got the plots on the second set of plots. These both look much worse than the cut based selection alone. Since I applied the preselection cuts (the SR cuts) to the MC samples before the training even happened the max amount of background + signal for the MC samples is ~7500 events. Those 7500 events are what got passed to the output file. Any extra cut applied (different than just the SR cut) will take the MC event counts even lower than the 7500. But the data will not necessarily go low enough to match the MC samples. Because all ~7x10^6 data events got directly passed to the output file, it's starting from more events and the BDT cut alone doesn't bring it down to the same order of magnitude as the MC samples. But the BDT cut does bring down the MC samples even lower than the 7500 events that they start with. Hence the high data event counts, and low MC sample event counts for the first set of plots.</li>
+      <div>
+        <li>I made another set of control plots using the BDT>0.028 cut. The MC events are an order of magnitude lower than it was with the cut based selection, and the data is an order of magnitude higher than the cut based selection. You can see those in the first set of plots. I also made a set of plots using both the selection cuts and the BDT cut, and got the plots on the second set of plots. These both look much worse than the cut based selection alone. Since I applied the preselection cuts (the SR cuts) to the MC samples before the training even happened the max amount of background + signal for the MC samples is ~7500 events. Those 7500 events are what got passed to the output file. Any extra cut applied (different than just the SR cut) will take the MC event counts even lower than the 7500. But the data will not necessarily go low enough to match the MC samples. Because all ~7x10^6 data events got directly passed to the output file, it's starting from more events and the BDT cut alone doesn't bring it down to the same order of magnitude as the MC samples. But the BDT cut does bring down the MC samples even lower than the 7500 events that they start with. Hence the high data event counts, and low MC sample event counts for the first set of plots.</li>
       
-      <div class="row">
-        <div class="column2">
-          <a href="img/BDT_control_plots.pdf">
-            <img src="img/c4_Run2_BDT_SR.png" width="400" height="400"/>
-          </a>
+        <div class="row">
+          <div class="column2">
+            <a href="img/BDT_control_plots.pdf">
+              <img src="img/c4_Run2_BDT_SR.png" width="400" height="400"/>
+            </a>
+          </div>
+          <div class="column2">
+            <a href="img/MVA_and_Cuts_control_plots.pdf">
+              <img src="img/c4_Run2_test.png" width="400" height="400"/>
+            </a>
+          </div>
         </div>
-        <div class="column2">
-          <a href="img/MVA_and_Cuts_control_plots.pdf">
-            <img src="img/c4_Run2_test.png" width="400" height="400"/>
-          </a>
-        </div>
+        <div class="update">UPDATE: These make sense in light of the plots below. The first set of plots incorrectly didn't include the <span class="inline_code">full_wv_sr</span> cuts. The second set did, but the data was way too low. Looking at the plots of the BDT response you can see that the data doesn't match the simulation at all, and is specifically low above the BDT cut value of 0.028, which would explain why the data is low when only plotting events in that region. This is corrected in the Week of Jan 23rd updates.</div>
       </div>
-
       <hr>
+      
       <h4>Week of: Jan 9th, 2022</h4>
+      <div>
         <li>I updated the plotting functions even more to make creating and saving plots even easier. Maybe one day I'll  be done making changes to them. Here are the plots for each year, both from the individual year training, and  from the full run 2 split apart. Background event numbers are close, generally off by 1-10 events per background   type (they should match perfectly). These plots are are of the TMVA variables and the three best MVA method   responses (based on AUC). BDT2 is just a normal BDT with optimized hyperparameters. BDTG is a BDT that uses a   gradient boost algorithm. There's no scaling factors applied to anything, but the full run 2 matches fairly well  without it. The individual years a little less so. I don't see anything obvious that would be causing the MVA  responses to have such a dramatic mismatch. I also have the variable rankings listed below for BDT2 and BDTG. I  can't find my ranking list for the DNN, I'll probably have to retrain to get the list again.</li>
+        <br>
         <div class="row">
-          <div class="column3"><h5><a href="img/week_of_9th/2016_TMVA.pdf">Individual 2016</a></h5></div>
-          <div class="column3"><h5><a href="img/week_of_9th/Run2_TMVA_2016.pdf">Run 2 2016</a></h5></div>
-          <div class="column3"><h5><a href="img/week_of_9th/2017_TMVA.pdf">Individual 2017</a></h5></div>
-          <div class="column3"><h5><a href="img/week_of_9th/Run2_TMVA_2017.pdf">Run 2 2017</a></h5></div>
-          <div class="column3"><h5><a href="img/week_of_9th/2018_TMVA.pdf">Individual 2018</a></h5></div>
-          <div class="column3"><h5><a href="img/week_of_9th/Run2_TMVA_2018.pdf">Run 2 2018</a></h5></div>
-          <div class="column3"><h5><a href="img/week_of_9th/Run2_multiplot.pdf">Full Run 2</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/2016_TMVA.pdf">Individual 2016</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/Run2_TMVA_2016.pdf">Run 2 2016</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/2017_TMVA.pdf">Individual 2017</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/Run2_TMVA_2017.pdf">Run 2 2017</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/2018_TMVA.pdf">Individual 2018</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/Run2_TMVA_2018.pdf">Run 2 2018</a></h5></div>
+          <div class="column3"><h5 class="link"><a href="img/week_of_9th/Run2_multiplot.pdf">Full Run 2</a></h5></div>
         </div>
-        <div class="row">
-          <div class="column3">
-            <table width="100%">
-              <tr>
-                <th>BDT2 Variable</th>
-                <th>Rank</th>
-              </tr>
-              <tr>
-                <td>vbf_m</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>bos_PuppiAK8_tau2tau1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>lep1_eta</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>bos_PuppiAK8_m_sd0_corr</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>zeppHad</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>zeppLep</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <td>vbf2_AK4_qgid</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>vbf1_AK4_qgid</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>vbf2_AK4_eta</td>
-                <td>9</td>
-              </tr>
-              <tr>
-                <td>vbf_deta</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>vbf_eta</td>
-                <td>11</td>
-              </tr>
-              <tr>
-                <td>vbf1_AK4_eta</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <td>nJet30f</td>
-                <td>13</td>
-              </tr>
-              <tr>
-                <td>vbf1_AK4_pt</td>
-                <td>14</td>
-              </tr>
-              <tr>
-                <td>vbf2_AK4_pt</td>
-                <td>15</td>
-              </tr>
-            </table>
+        <br>
+        <div>
+          <div class="row">
+            <div class="column3">
+              <table width="100%">
+                <tr>
+                  <th>BDT2 Variable</th>
+                  <th>Rank</th>
+                </tr>
+                <tr>
+                  <td>vbf_m</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>bos_PuppiAK8_tau2tau1</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>lep1_eta</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>bos_PuppiAK8_m_sd0_corr</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>zeppHad</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>zeppLep</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>vbf2_AK4_qgid</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td>vbf1_AK4_qgid</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>vbf2_AK4_eta</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <td>vbf_deta</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>vbf_eta</td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <td>vbf1_AK4_eta</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td>nJet30f</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>vbf1_AK4_pt</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>vbf2_AK4_pt</td>
+                  <td>15</td>
+                </tr>
+              </table>
+            </div>
+            <div class="column3">
+              <table width="100%">
+                <tr>
+                  <th>BDTG Variable</th>
+                  <th>Rank</th>
+                </tr>
+                <tr>
+                  <td>bos_PuppiAK8_m_sd0_corr</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>zeppHad</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>bos_PuppiAK8_tau2tau1</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>lep1_eta</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>vbf_eta</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>zeppLep</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>vbf1_AK4_eta</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td>vbf2_AK4_qgid</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>vbf2_AK4_eta</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <td>vbf_m</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>vbf_deta</td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <td>vbf1_AK4_qgid</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td>nJet30f</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>vbf1_AK4_pt</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>vbf2_AK4_pt</td>
+                  <td>15</td>
+                </tr>
+              </table>
+            </div>
+            <div class="column3"></div>
           </div>
-          <div class="column3">
-            <table width="100%">
-              <tr>
-                <th>BDTG Variable</th>
-                <th>Rank</th>
-              </tr>
-              <tr>
-                <td>bos_PuppiAK8_m_sd0_corr</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>zeppHad</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>bos_PuppiAK8_tau2tau1</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>lep1_eta</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>vbf_eta</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>zeppLep</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <td>vbf1_AK4_eta</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>vbf2_AK4_qgid</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>vbf2_AK4_eta</td>
-                <td>9</td>
-              </tr>
-              <tr>
-                <td>vbf_m</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>vbf_deta</td>
-                <td>11</td>
-              </tr>
-              <tr>
-                <td>vbf1_AK4_qgid</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <td>nJet30f</td>
-                <td>13</td>
-              </tr>
-              <tr>
-                <td>vbf1_AK4_pt</td>
-                <td>14</td>
-              </tr>
-              <tr>
-                <td>vbf2_AK4_pt</td>
-                <td>15</td>
-              </tr>
-            </table>
-          </div>
-          <div class="column3"></div>
         </div>
         <p>DNN_GPU doesn't give a variable ranking. MLPBFGS does, and performs roughly the same as DNN_GPU (or sometimes  even better) based on AUC. MLPBFGS gives a warning that I don't totally understand it's importance. "Line search increased error. Something is wrong!"</p>
+      </div>
       <hr>
+
       <h4>Week of: Jan 16th</h4>
+      <div>
         <li><p> I need to figure out which weights need to be applied to the training step. There's options for both  overall weights applied per tree, and weight expressions that are applied on an event by event basis. Right now  there's just one called "mcWeight" which is xsec/nMCgen, and the overall background weight of 1.</p>
           <p>There are multiple event weight branches, I just don't know which ones are actually supposed to be used, or  what some of them even are. Is there a reference for these (or any) datasets on the twiki? Here is the list of   the weights included in the ntuples: 
             <ul>
@@ -208,20 +219,67 @@
           </p>
         </li>
         <li><h5>Links for plots using different sets of weights</h5>
-          <p>Using weights: <span style="color:darkred"> mcWeight, genWeight, L1PFWeight, btagWeight_loose, lep1_idEffWeight, lep1_trigEffWeight, lep2_idEffWeight, lep2_trigEffWeight</span></p>
-            <div class="row">
-              <div class="column3"><h5><a href="img/week_of_16th/2016_multiplot_set_20-27.pdf">2016</a></h5></div>
-              <div class="column3"><h5><a href="img/week_of_16th/2017_multiplot_set_19-54.pdf">2017</a></h5></div>
-              <div class="column3"><h5><a href="img/week_of_16th/2018_multiplot_set_4-51.pdf">2018</a></h5></div>
+          <p style="margin-top: 0px; margin-bottom: 0px;">Using weights: <span style="color:darkred"> mcWeight, genWeight, L1PFWeight, btagWeight_loose, lep1_idEffWeight, lep1_trigEffWeight, lep2_idEffWeight, lep2_trigEffWeight</span></p>
+            <div class="row" style="height: 50px;">
+              <div class="column3"><h5 class="link"><a href="img/week_of_16th/2016_multiplot_set_20-27.pdf">2016</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_16th/2017_multiplot_set_19-54.pdf">2017</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_16th/2018_multiplot_set_4-51.pdf">2018</a></h5></div>
             </div>
-          <p>Using weights: <span style="color:darkred"> mcWeight, genWeight, L1PFWeight, btagWeight_loose</span></p>
-            <div class="row">
-              <div class="column3"><h5><a href="img/week_of_16th/2016_multiplot_set_20-57.pdf">2016</a></h5></div>
-              <div class="column3"><h5><a href="img/week_of_16th/2017_multiplot_set_22-17.pdf">2017</a></h5></div>
-              <div class="column3"><h5><a href="img/week_of_16th/2018_multiplot_set_5-58.pdf">2018</a></h5></div>
+          <p style="margin-top: 0px; margin-bottom: 0px;">Using weights: <span style="color:darkred"> mcWeight, genWeight, L1PFWeight, btagWeight_loose</span></p>
+            <div class="row" style="height: 50px;">
+              <div class="column3"><h5 class="link"><a href="img/week_of_16th/2016_multiplot_set_20-57.pdf">2016</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_16th/2017_multiplot_set_22-17.pdf">2017</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_16th/2018_multiplot_set_5-58.pdf">2018</a></h5></div>
             </div>
         </li>
+      </div>
+      <hr>
 
+      <h4>Week of: Jan 23rd</h4>
+      <div>
+        <li>
+          <p>Progress! Of the three main issues I've been having (weird BDT responses, normalizations being off, and not being able to plot control regions) I fixed two of them. The weird BDT/Neural net responses, and the control regions seem to be fixed. I realized I wasn't processing data events where <span class="inline_code">vbs(1/2)_AK4_qgid</span> were NaN. A while ago I was getting errors on those events so I ignored them while the MVA methods were being applied. Unfortunately I didn't actually cut those events out, they just didn't get processed. All of those events are probably what went into that one large bin in the DNN plot, and those events not being processed is probably what caused the drop in data for the BDT response.</p>
+          <p>As far as the control region issue I can't believe it took me this long to see the solution. All three regions (top, w+jets, and signal) have common cuts (literally called common) I can train using the common cuts and then I can apply the final set of cuts when I go to make the plots. The MVA responses might be a bit different because there's more events to train on, but I don't think it will make a massive difference.</p>
+          <p>I'm still having issues with the normalizations. I have two main sets of weights that I've been applying to the training and plots, and I've been working on comparing them.</p>
+
+          <div class="link_list">
+            <p style="margin-top: 0px; margin-bottom: 0px;">Weight1: <span style="color:firebrick"> mcWeight, genWeight, L1PFWeight, btagWeight_loose, lep1_idEffWeight, lep1_trigEffWeight</span></p>
+            <div class="row">
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2016/2016_Weight1_SR.pdf">2016 SR</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2017/2017_Weight1_SR.pdf">2017 SR</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2018/2018_Weight1_SR.pdf">2018 SR</a></h5></div>
+            </div>
+            <div class="row">
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2016/2016_Weight1_Top_CR.pdf">2016 Top</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2017/2017_Weight1_Top_CR.pdf">2017 Top</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2018/2018_Weight1_Top_CR.pdf">2018 Top</a></h5></div>
+            </div>
+            <div class="row">
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2016/2016_Weight1_Wjets_CR.pdf">2016 W + jets</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2017/2017_Weight1_Wjets_CR.pdf">2017 W + jets</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2018/2018_Weight1_Wjets_CR.pdf">2018 W + jets</a></h5></div>
+            </div>
+            <p style="margin-top: 0px; margin-bottom: 0px;">Weight2: <span style="color:firebrick">mcWeight, genWeight</span></p>
+            <div class="row">
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2016/2016_Weight2_SR.pdf">2016 SR</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2017/2017_Weight2_SR.pdf">2017 SR</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2018/2018_Weight2_SR.pdf">2018 SR</a></h5></div>
+            </div>
+            <div class="row">
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2016/2016_Weight2_Top_CR.pdf">2016 Top</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2017/2017_Weight2_Top_CR.pdf">2017 Top</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2018/2018_Weight2_Top_CR.pdf">2018 Top</a></h5></div>
+            </div>
+            <div class="row">
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2016/2016_Weight2_Wjets_CR.pdf">2016 W + jets</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2017/2017_Weight2_Wjets_CR.pdf">2017 W + jets</a></h5></div>
+              <div class="column3"><h5 class="link"><a href="img/week_of_23rd/2018/2018_Weight2_Wjets_CR.pdf">2018 W + jets</a></h5></div>
+            </div>
+          </div>
+          <br>
+          <p>I also have Top and Wjets control region plots with both of those sets of weights. Maybe there's a "best" set of weights I should be using and then I'll still need to scale things a bit based on the control regions.</p>
+        </li>
+      </div>
     </ul>
 
   </div>
