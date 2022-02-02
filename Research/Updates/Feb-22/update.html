@@ -10,21 +10,92 @@
 
   <ul class="banner">
     <li><a href="https://mkosh.github.io/webkosh/">Home</a></li>
-    <li><a class="active" href="https://mkosh.github.io/webkosh/updates.html">Updates</a></li>
+    <li><a class="active_tab" href="https://mkosh.github.io/webkosh/updates.html">Updates</a></li>
     <li><a href="https://github.com/MKosh">GitHub</a>
     <li><a href="https://mkosh.github.io/webkosh/about.html">About</a></li>
   </ul>
 
   <div class="update_page">
     <h2>Updates</h2>
-    <hr>
+    <hr class="break">
 
     <ul>
-      <li></li>
-      <h4>Week of: Jan 30th, 2022</h4>
+      <button class="collapsible">Week of: Jan 30th, 2022</button>
+        <div class="content">
+          <li>
+            <p>First thing to report is that I fixed the lepton cuts. I had an issue a few months back that when I tried to plot the muon channel there we no events. We put that issue on the back burner and I just happened to stumble across the fix (bad eta cuts). So all plots up until now have been in the electron channel. Now plots will have both the muon and electron, and I can plot them separately if I need to. This also means there are more events than in previous plots, but when just doing the electron cuts the numbers match again.</p>
+            <p>I redid the training to include the muon events, plotted the control regions, found the scale factors, and made the scaled signal region plots. Things match fairly close. I also included more variables in the training again since there's been so many other things that have changed, the rankings might have changed a bit too. I added a way to save the terminal output to a text file so I can more easily go back to get the variable rankings to compare them.</p>
+            <div class="link_list">
+              <div class="row">
+                <div class="column3"><h5 class="link"><a href="img/week_of_30th/2016/2016_SR_lep_19-29.pdf">2016 SR lep</a></h5></div>
+                <div class="column3"><h5 class="link"><a href="img/week_of_30th/2017/2017_SR_lep_19-32.pdf">2017 SR lep</a></h5></div>
+                <div class="column3"><h5 class="link"><a href="img/week_of_30th/2018/2018_SR_lep_19-36.pdf">2018 SR lep</a></h5></div>
+              </div>
+              <div class="row">
+                <div class="column3"><p>Top: 0.907, W+jets: 1.466</p></div>
+                <div class="column3"><p>Top: 1.250, W+jets: 1.255</p></div>
+                <div class="column3"><p>Top: 0.720, W+jets: 0.669</p></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <p>I also redid the optimal cut scan to find the best cut on the MVA responses and plotted the results. I'm not including MLPBFGS because the cut scan failed on that method. I might go back to using DNN_GPU, but there's a trade off; MLPBFGS gives a variable ranking but it might be more hassle than it's worth, DNN_GPU doesn't give a variable ranking, but the cut scan has worked in the past.</p>
+            <div class="link_list">
+              <div class="row">
+                <div class="column3"><img src="img/week_of_30th/2016/sgf1_BDT.png" width="400" height="400"/></div>
+                <div class="column3"><img src="img/week_of_30th/2017/sgf1_BDT.png" width="400" height="400"/></div>
+                <div class="column3"><img src="img/week_of_30th/2018/sgf1_BDT.png" width="400" height="400"/></div>
+              </div>
+              <div class="row">
+                <div class="column3"><img src="img/week_of_30th/2016/sgf1_BDTG.png" width="400" height="400"/></div>
+                <div class="column3"><img src="img/week_of_30th/2017/sgf1_BDTG.png" width="400" height="400"/></div>
+                <div class="column3"><img src="img/week_of_30th/2018/sgf1_BDTG.png" width="400" height="400"/></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <p>Combining the addition of the muon channel, the scale factors, and the optimal cut for BDT results in these plots</p>
+            <div class="link_list">
+              <div class="row">
+                <div class="column3"><a href="img/week_of_30th/2016/2016_BDT_SR_lep_optCut.pdf"><img src="img/week_of_30th/2016/2016_BDT_SR_lep_optCut.png" width="400" height="400"/></a></div>
+                <div class="column3"><a href="img/week_of_30th/2017/2017_BDT_SR_lep_20-55.pdf"><img src="img/week_of_30th/2017/2017_BDT_SR_lep_20-55.png" width="400" height="400"/></a></div>
+                <div class="column3"><a href="img/week_of_30th/2018/2018_BDT_SR_lep_21-28.pdf"><img src="img/week_of_30th/2018/2018_BDT_SR_lep_21-28.png" width="400" height="400"/></a></div>
+              </div>
+              <p>And these are using the BDTG cut, they are mostly similar to the BDT cut, which make sense given their similar AUC values.</p>
+              <div class="row">
+                <div class="column3"><a href="img/week_of_30th/2016/2016_BDTG_SR_lep_21-54.pdf"><img src="img/week_of_30th/2016/2016_BDTG_SR_lep_21-54.png" width="400" height="400"/></a></div>
+                <div class="column3"><a href="img/week_of_30th/2017/2017_BDTG_SR_lep_21-48.pdf"><img src="img/week_of_30th/2017/2017_BDTG_SR_lep_21-48.png" width="400" height="400"/></a></div>
+                <div class="column3"><a href="img/week_of_30th/2018/2018_BDTG_SR_lep_21-42.pdf"><img src="img/week_of_30th/2018/2018_BDTG_SR_lep_21-42.png" width="400" height="400"/></a></div>
+              </div>
+            </div>
+          </li>
+        </div>
+      <hr class="break">
+      <button class="collapsible">Week of: Feb 6th, 2022</button>
+        <div class="content">
+          <li></li>
+        </div>
+      <hr class="break">
     </ul>
 
   </div>
+
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+  </script>
 
 <!--
 

@@ -3,5 +3,8 @@
         120
     ],
     "editor.wordWrapColumn": 120,
-    "editor.wordWrap": "wordWrapColumn"
+    "editor.wordWrap": "wordWrapColumn",
+    "cSpell.words": [
+        "MLPBFGS"
+    ]
 }
