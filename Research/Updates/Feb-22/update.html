@@ -16,7 +16,7 @@
   </ul>
 
   <div class="update_page">
-    <h2>Updates</h2>
+    <h2>February 2022 Updates</h2>
     <hr class="break">
 
     <ul>
@@ -71,9 +71,508 @@
           </li>
         </div>
       <hr class="break">
+
       <button class="collapsible">Week of: Feb 6th, 2022</button>
         <div class="content">
-          <li></li>
+          <li><p>I spent a day cleaning up some of the plotting functionality and the makefile so I can more easily make plots with only changing the arguments to the make command. I also worked on the cutflow function to make it a little more flexible like the plotting functions. I noticed I'm slowly working backwards. A few months ago I was training on almost all data&MC, then I started training only in the SR, but to plot the CRs I had to let those events back into the training. Now to see the effects of all of the cuts I have to not preapply them before the training. So I'm only cutting out NaN's and everything outside of the wv_boosted region. I'm basically back to training on most data&MC.</p>
+            <p>I also had a weird issue where 2016 & 2018 trained fine, but 2017 gave issues. After the decorrelation step (before the actual training) somehow everything was getting set to 0. Then I took that step out and none of the years worked because the DNN_GPU couldn't use CUDA for some reason. I just install the CUDA enabled version of ROOT from the package manager and it worked fine, so I'll stick with that version until the next weird error.</p>
+            <li><p>I generated cut flow tables after training on the wider datasets (again, with the more strict preselection cuts the first 6 or so cuts in the flow had the same numbers because they were all preapplied). The function also creates a corresponding set of plots, linked below the tables.</p>
+            </li>
+            <div class="row">
+              <div class="column3">
+                <style type="text/css">
+                  .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+                  .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444; font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg th{background-color:slategray;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff; font-family:Arial, sans-serif;font-size:12px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg .tg-baqh{border-color: inherit; text-align:center;vertical-align:top}
+                  .tg .tg-j0tj{background-color:#bfd1e7;border-color:inherit;text-align:center;vertical-align:top}
+                  </style>
+                  <table class="tg" style="table-layout: auto; width: 100%">
+                  <thead>
+                    <tr>
+                      <th class="tg-baqh">Cut</th>
+                      <th class="tg-baqh">Data</th>
+                      <th class="tg-baqh">Total bkg</th>
+                      <th class="tg-baqh">Total sig</th>
+                      <th class="tg-baqh">S/sqrt(S+B)</th>
+                      <th class="tg-baqh">95% CL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tg-j0tj">wv_boosted</td>
+                      <td class="tg-j0tj">190191</td>
+                      <td class="tg-j0tj">193126.5+/-246.7</td>
+                      <td class="tg-j0tj">1045.15+/-5.67(1.25)</td>
+                      <td class="tg-j0tj">2.46</td>
+                      <td class="tg-j0tj">2.47</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">region</td>
+                      <td class="tg-baqh">190191</td>
+                      <td class="tg-baqh">193126.5+/-246.7</td>
+                      <td class="tg-baqh">1045.15+/-5.67(1.25)</td>
+                      <td class="tg-baqh">2.46</td>
+                      <td class="tg-baqh">2.47</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">iso_cut</td>
+                      <td class="tg-j0tj">115636</td>
+                      <td class="tg-j0tj">134390.4+/-211.9</td>
+                      <td class="tg-j0tj">793.16+/-4.94(0.95)</td>
+                      <td class="tg-j0tj">2.22</td>
+                      <td class="tg-j0tj">2.23</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">zepp_cut</td>
+                      <td class="tg-baqh">115636</td>
+                      <td class="tg-baqh">134390.4+/-211.9</td>
+                      <td class="tg-baqh">793.16+/-4.94(0.95)</td>
+                      <td class="tg-baqh">2.22</td>
+                      <td class="tg-baqh">2.23</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">lep_pt</td>
+                      <td class="tg-j0tj">112483</td>
+                      <td class="tg-j0tj">130657.2+/-209.2</td>
+                      <td class="tg-j0tj">771.66+/-4.87(0.93)</td>
+                      <td class="tg-j0tj">2.20</td>
+                      <td class="tg-j0tj">2.20</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">lep_eta</td>
+                      <td class="tg-baqh">111243</td>
+                      <td class="tg-baqh">129128.6+/-208.0</td>
+                      <td class="tg-baqh">764.02+/-4.85(0.92)</td>
+                      <td class="tg-baqh">2.19</td>
+                      <td class="tg-baqh">2.19</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">fatjet_pt</td>
+                      <td class="tg-j0tj">110970</td>
+                      <td class="tg-j0tj">126668.9+/-205.3</td>
+                      <td class="tg-j0tj">755.13+/-4.82(0.91)</td>
+                      <td class="tg-j0tj">2.18</td>
+                      <td class="tg-j0tj">2.19</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">fatjet_eta</td>
+                      <td class="tg-baqh">110970</td>
+                      <td class="tg-baqh">126668.9+/-205.3</td>
+                      <td class="tg-baqh">755.13+/-4.82(0.91)</td>
+                      <td class="tg-baqh">2.18</td>
+                      <td class="tg-baqh">2.19</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">fatjet_tau21</td>
+                      <td class="tg-j0tj">80303</td>
+                      <td class="tg-j0tj">92532.4+/-174.2</td>
+                      <td class="tg-j0tj">646.19+/-4.46(0.77)</td>
+                      <td class="tg-j0tj">2.15</td>
+                      <td class="tg-j0tj">2.16</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">met_pt</td>
+                      <td class="tg-baqh">69538</td>
+                      <td class="tg-baqh">82275.6+/-164.1</td>
+                      <td class="tg-baqh">567.36+/-4.18(0.68)</td>
+                      <td class="tg-baqh">2.00</td>
+                      <td class="tg-baqh">2.01</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">btag_veto</td>
+                      <td class="tg-j0tj">12878</td>
+                      <td class="tg-j0tj">15197.4+/-80.9</td>
+                      <td class="tg-j0tj">158.21+/-2.19(0.19)</td>
+                      <td class="tg-j0tj">1.44</td>
+                      <td class="tg-j0tj">1.45</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">vbs_jets_mjj</td>
+                      <td class="tg-baqh">12878</td>
+                      <td class="tg-baqh">15197.4+/-80.9</td>
+                      <td class="tg-baqh">158.21+/-2.19(0.19)</td>
+                      <td class="tg-baqh">1.44</td>
+                      <td class="tg-baqh">1.45</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">vbs_delta_eta</td>
+                      <td class="tg-j0tj">12385</td>
+                      <td class="tg-j0tj">14475.4+/-80.4</td>
+                      <td class="tg-j0tj">152.72+/-2.15(0.18)</td>
+                      <td class="tg-j0tj">1.42</td>
+                      <td class="tg-j0tj">1.43</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">vbs_jets_pt</td>
+                      <td class="tg-baqh">5849</td>
+                      <td class="tg-baqh">5981.2+/-47.5</td>
+                      <td class="tg-baqh">102.20+/-1.75(0.12)</td>
+                      <td class="tg-baqh">1.47</td>
+                      <td class="tg-baqh">1.49</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">wv_sr</td>
+                      <td class="tg-j0tj">3182</td>
+                      <td class="tg-j0tj">3373.9+/-34.4</td>
+                      <td class="tg-j0tj">81.43+/-1.56(0.10)</td>
+                      <td class="tg-j0tj">1.53</td>
+                      <td class="tg-j0tj">1.56</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">BDT_cut_2016</td>
+                      <td class="tg-baqh">2829</td>
+                      <td class="tg-baqh">2969.9+/-32.0</td>
+                      <td class="tg-baqh">80.49+/-1.55(0.10)</td>
+                      <td class="tg-baqh">1.61</td>
+                      <td class="tg-baqh">1.64</td>
+                    </tr>
+                  </tbody>
+                  </table>
+              </div>
+              <div class="column3">
+                <style type="text/css">
+                  .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+                  .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg th{background-color:slategray;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;font-family:Arial, sans-serif;font-size:12px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top; font-size: 12px;}
+                  .tg .tg-svo0{background-color:#bfd1e7;border-color:inherit;text-align:center;vertical-align:top; font-size: 12px;}
+                  </style>
+                  <table class="tg" style="table-layout: auto; width:100%;">
+                  <colgroup>
+                  <col style="width: 104px">
+                  <col style="width: 66px">
+                  <col style="width: 126px">
+                  <col style="width: 150px">
+                  <col style="width: 84px">
+                  <col style="width: 61px">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th class="tg-c3ow" style="font-size:11px">Cut</th>
+                      <th class="tg-c3ow" style="font-size:11px">Data</th>
+                      <th class="tg-c3ow" style="font-size:11px">Total bkg</th>
+                      <th class="tg-c3ow" style="font-size:11px">Total Sig</th>
+                      <th class="tg-c3ow" style="font-size:11px">S/sqrt(S+B)</th>
+                      <th class="tg-c3ow" style="font-size:11px">95% CL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tg-svo0">wv_boosted</td>
+                      <td class="tg-svo0">250933</td>
+                      <td class="tg-svo0">238849.9+/-293.0</td>
+                      <td class="tg-svo0">1033.76+/-3.72(1.07)</td>
+                      <td class="tg-svo0">2.34</td>
+                      <td class="tg-svo0">2.34</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">region</td>
+                      <td class="tg-c3ow">250933</td>
+                      <td class="tg-c3ow">238849.9+/-293.0</td>
+                      <td class="tg-c3ow">1033.76+/-3.72(1.07)</td>
+                      <td class="tg-c3ow">2.34</td>
+                      <td class="tg-c3ow">2.34</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">iso_cut</td>
+                      <td class="tg-svo0">164200</td>
+                      <td class="tg-svo0">172870.4+/-259.0</td>
+                      <td class="tg-svo0">794.01+/-3.26(0.82)</td>
+                      <td class="tg-svo0">2.11</td>
+                      <td class="tg-svo0">2.12</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">zepp_cut</td>
+                      <td class="tg-c3ow">164200</td>
+                      <td class="tg-c3ow">172870.4+/-259.0</td>
+                      <td class="tg-c3ow">794.01+/-3.26(0.82)</td>
+                      <td class="tg-c3ow">2.11</td>
+                      <td class="tg-c3ow">2.12</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">lep_pt</td>
+                      <td class="tg-svo0">161571</td>
+                      <td class="tg-svo0">170340.4+/-257.2</td>
+                      <td class="tg-svo0">784.72+/-3.24(0.81)</td>
+                      <td class="tg-svo0">2.10</td>
+                      <td class="tg-svo0">2.11</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">lep_eta</td>
+                      <td class="tg-c3ow">159788</td>
+                      <td class="tg-c3ow">168409.0+/-255.7</td>
+                      <td class="tg-c3ow">776.61+/-3.23(0.80)</td>
+                      <td class="tg-c3ow">2.09</td>
+                      <td class="tg-c3ow">2.10</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">fatjet_pt</td>
+                      <td class="tg-svo0">159589</td>
+                      <td class="tg-svo0">165817.5+/-252.2</td>
+                      <td class="tg-svo0">769.99+/-3.21(0.80)</td>
+                      <td class="tg-svo0">2.09</td>
+                      <td class="tg-svo0">2.10</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">fatjet_eta</td>
+                      <td class="tg-c3ow">159589</td>
+                      <td class="tg-c3ow">165817.5+/-252.2</td>
+                      <td class="tg-c3ow">769.99+/-3.21(0.80)</td>
+                      <td class="tg-c3ow">2.09</td>
+                      <td class="tg-c3ow">2.10</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">fatjet_tau21</td>
+                      <td class="tg-svo0">117198</td>
+                      <td class="tg-svo0">126431.4+/-215.5</td>
+                      <td class="tg-svo0">677.61+/-3.01(0.70)</td>
+                      <td class="tg-svo0">2.11</td>
+                      <td class="tg-svo0">2.11</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">met_pt</td>
+                      <td class="tg-c3ow">104309</td>
+                      <td class="tg-c3ow">113516.2+/-204.9</td>
+                      <td class="tg-c3ow">604.68+/-2.85(0.63)</td>
+                      <td class="tg-c3ow">1.99</td>
+                      <td class="tg-c3ow">1.99</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">btag_veto</td>
+                      <td class="tg-svo0">21934</td>
+                      <td class="tg-svo0">21595.9+/-115.9</td>
+                      <td class="tg-svo0">181.73+/-1.54(0.19)</td>
+                      <td class="tg-svo0">1.36</td>
+                      <td class="tg-svo0">1.36</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">vbs_jets_mjj</td>
+                      <td class="tg-c3ow">21934</td>
+                      <td class="tg-c3ow">21595.9+/-115.9</td>
+                      <td class="tg-c3ow">181.73+/-1.54(0.19)</td>
+                      <td class="tg-c3ow">1.36</td>
+                      <td class="tg-c3ow">1.36</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">vbs_delta_eta</td>
+                      <td class="tg-svo0">21338</td>
+                      <td class="tg-svo0">20848.4+/-115.6</td>
+                      <td class="tg-svo0">173.14+/-1.50(0.18)</td>
+                      <td class="tg-svo0">1.32</td>
+                      <td class="tg-svo0">1.32</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">vbs_jets_pt</td>
+                      <td class="tg-c3ow">6754</td>
+                      <td class="tg-c3ow">7154.3+/-51.7</td>
+                      <td class="tg-c3ow">111.30+/-1.19(0.12)</td>
+                      <td class="tg-c3ow">1.43</td>
+                      <td class="tg-c3ow">1.45</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-svo0">wv_sr</td>
+                      <td class="tg-svo0">3635</td>
+                      <td class="tg-svo0">3909.4+/-37.4</td>
+                      <td class="tg-svo0">91.12+/-1.08(0.09)</td>
+                      <td class="tg-svo0">1.58</td>
+                      <td class="tg-svo0">1.60</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-c3ow">BDT_cut_2016</td>
+                      <td class="tg-c3ow">3126</td>
+                      <td class="tg-c3ow">3398.2+/-34.5</td>
+                      <td class="tg-c3ow">90.02+/-1.07(0.09)</td>
+                      <td class="tg-c3ow">1.67</td>
+                      <td class="tg-c3ow">1.70</td>
+                    </tr>
+                  </tbody>
+                  </table>
+              </div>
+              <div class="column3">
+                <style type="text/css">
+                  .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+                  .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444; font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg th{background-color:slategray;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff; font-family:Arial, sans-serif;font-size:12px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg .tg-baqh{border-color:inherit;text-align:center;vertical-align:top}
+                  .tg .tg-j0tj{background-color:#bfd1e7;border-color:inherit;text-align:center;vertical-align:top}
+                  </style>
+                  <table class="tg" style="table-layout: auto; width: 100%">
+                  <colgroup>
+                  <col style="width: 104px">
+                  <col style="width: 66px">
+                  <col style="width: 121px">
+                  <col style="width: 142px">
+                  <col style="width: 84px">
+                  <col style="width: 61px">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th class="tg-baqh">Cut</th>
+                      <th class="tg-baqh">Data</th>
+                      <th class="tg-baqh">Total bkg</th>
+                      <th class="tg-baqh">Total sig</th>
+                      <th class="tg-baqh">S/sqrt(S+B)</th>
+                      <th class="tg-baqh">95% CL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tg-j0tj">wv_boosted</td>
+                      <td class="tg-j0tj">224437</td>
+                      <td class="tg-j0tj">201466.8+/236.2</td>
+                      <td class="tg-j0tj">1667.29+/6.23(1.20)</td>
+                      <td class="tg-j0tj">3.16</td>
+                      <td class="tg-j0tj">3.16</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">region</td>
+                      <td class="tg-baqh">224437</td>
+                      <td class="tg-baqh">201466.8+/236.2</td>
+                      <td class="tg-baqh">1667.29+/6.23(1.20)</td>
+                      <td class="tg-baqh">3.16</td>
+                      <td class="tg-baqh">3.16</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">iso_cut</td>
+                      <td class="tg-j0tj">137923</td>
+                      <td class="tg-j0tj">142740.5+/204.2</td>
+                      <td class="tg-j0tj">1267.47+/5.46(0.91)</td>
+                      <td class="tg-j0tj">2.85</td>
+                      <td class="tg-j0tj">2.86</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">zepp_cut</td>
+                      <td class="tg-baqh">137923</td>
+                      <td class="tg-baqh">142740.5+/204.2</td>
+                      <td class="tg-baqh">1267.47+/5.46(0.91)</td>
+                      <td class="tg-baqh">2.85</td>
+                      <td class="tg-baqh">2.86</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">lep_pt</td>
+                      <td class="tg-j0tj">135808</td>
+                      <td class="tg-j0tj">140968.0+/203.1</td>
+                      <td class="tg-j0tj">1255.25+/5.44(0.90)</td>
+                      <td class="tg-j0tj">2.84</td>
+                      <td class="tg-j0tj">2.85</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">lep_eta</td>
+                      <td class="tg-baqh">134384</td>
+                      <td class="tg-baqh">139323.7+/201.9</td>
+                      <td class="tg-baqh">1240.71+/5.41(0.89)</td>
+                      <td class="tg-baqh">2.82</td>
+                      <td class="tg-baqh">2.83</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">fatjet_pt</td>
+                      <td class="tg-j0tj">134374</td>
+                      <td class="tg-j0tj">136982.8+/199.6</td>
+                      <td class="tg-j0tj">1228.35+/5.39(0.88)</td>
+                      <td class="tg-j0tj">2.82</td>
+                      <td class="tg-j0tj">2.83</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">fatjet_eta</td>
+                      <td class="tg-baqh">134374</td>
+                      <td class="tg-baqh">136982.8+/199.6</td>
+                      <td class="tg-baqh">1228.35+/5.39(0.88)</td>
+                      <td class="tg-baqh">2.82</td>
+                      <td class="tg-baqh">2.83</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">fatjet_tau21</td>
+                      <td class="tg-j0tj">99399</td>
+                      <td class="tg-j0tj">104371.8+/167.3</td>
+                      <td class="tg-j0tj">1082.86+/5.09(0.78)</td>
+                      <td class="tg-j0tj">2.85</td>
+                      <td class="tg-j0tj">2.86</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">met_pt</td>
+                      <td class="tg-baqh">88109</td>
+                      <td class="tg-baqh">92567.7+/155.8</td>
+                      <td class="tg-baqh">958.01+/4.74(0.69)</td>
+                      <td class="tg-baqh">2.67</td>
+                      <td class="tg-baqh">2.68</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">btag_veto</td>
+                      <td class="tg-j0tj">14668</td>
+                      <td class="tg-j0tj">16525.1+/92.6</td>
+                      <td class="tg-j0tj">286.04+/2.60(0.21)</td>
+                      <td class="tg-j0tj">1.88</td>
+                      <td class="tg-j0tj">1.89</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">vbs_jets_mjj</td>
+                      <td class="tg-baqh">14668</td>
+                      <td class="tg-baqh">16525.1+/92.6</td>
+                      <td class="tg-baqh">286.04+/2.60(0.21)</td>
+                      <td class="tg-baqh">1.88</td>
+                      <td class="tg-baqh">1.89</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">vbs_delta_eta</td>
+                      <td class="tg-j0tj">14128</td>
+                      <td class="tg-j0tj">15861.9+/92.3</td>
+                      <td class="tg-j0tj">275.19+/2.52(0.20)</td>
+                      <td class="tg-j0tj">1.84</td>
+                      <td class="tg-j0tj">1.86</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">vbs_jets_pt</td>
+                      <td class="tg-baqh">6286</td>
+                      <td class="tg-baqh">6175.6+/51.2</td>
+                      <td class="tg-baqh">185.34+/2.06(0.13)</td>
+                      <td class="tg-baqh">1.99</td>
+                      <td class="tg-baqh">2.02</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-j0tj">wv_sr</td>
+                      <td class="tg-j0tj">3416</td>
+                      <td class="tg-j0tj">3464.6+/36.4</td>
+                      <td class="tg-j0tj">150.53+/1.87(0.11)</td>
+                      <td class="tg-j0tj">2.16</td>
+                      <td class="tg-j0tj">2.19</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">BDT_cut_2016</td>
+                      <td class="tg-baqh">3026</td>
+                      <td class="tg-baqh">3042.1+/34.0</td>
+                      <td class="tg-baqh">148.93+/1.86(0.11)</td>
+                      <td class="tg-baqh">2.27</td>
+                      <td class="tg-baqh">2.32</td>
+                    </tr>
+                  </tbody>
+                  </table>
+              </div>
+            </div>
+            <div class="link_list">
+              <div class="row">
+                <div class="column3">
+                  <h5 class="link"><a href="img/week_of_6th/2016_VBS_cutflow_5-13.pdf">2016 cutflow (vbf_mjj)</a></h5>
+                </div>
+                <div class="column3">
+                  <h5 class="link"><a href="img/week_of_6th/2017_VBS_cutflow_4-26.pdf">2017 cutflow (vbf_mjj)</a></h5>
+                </div>
+                <div class="column3">
+                  <h5 class="link"><a href="img/week_of_6th/2018_VBS_cutflow_5-49.pdf">2018 cutflow (vbf_mjj)</a></h5>
+                </div>
+              </div>
+            </div>
+            <li>
+              <p>I ran the optimal cut scan on those results too</p>
+              <div class="link_list">
+                <div class="row">
+                  <div class="column3"><img src="img/week_of_6th/optCutScan/sgf1_BDT_2016.png" width="400" height="400"/></div>
+                  <div class="column3"><img src="img/week_of_6th/optCutScan/sgf1_BDT_2017.png" width="400" height="400"/></div>
+                  <div class="column3"><img src="img/week_of_6th/optCutScan/sgf1_BDT_2018.png" width="400" height="400"/></div>
+              </div>
+              <p>I haven't had the time to run all of the trainings while varying the number of variables. I'm stuck wondering about the best trade off for the preselection cuts. More cuts for faster (with maybe better results?) training but lose information from the cut flows, or fewer cuts with slower training but know what the cuts are doing.</p>
+            </li>
+          </li>
         </div>
       <hr class="break">
     </ul>
