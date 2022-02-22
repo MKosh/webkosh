@@ -79,7 +79,7 @@
             <li><p>I generated cut flow tables after training on the wider datasets (again, with the more strict preselection cuts the first 6 or so cuts in the flow had the same numbers because they were all preapplied). The function also creates a corresponding set of plots, linked below the tables.</p>
             </li>
             <div class="row">
-              <div class="column3">
+              <div class="column3" style="overflow-x:auto; white-space: nowrap;">
                 <style type="text/css">
                   .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
                   .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444; font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -230,7 +230,7 @@
                   </tbody>
                   </table>
               </div>
-              <div class="column3">
+              <div class="column3" style="overflow-x:auto; white-space: nowrap;">
                 <style type="text/css">
                   .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
                   .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -389,7 +389,7 @@
                   </tbody>
                   </table>
               </div>
-              <div class="column3">
+              <div class="column3" style="overflow-x:auto; white-space: nowrap;">
                 <style type="text/css">
                   .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
                   .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444; font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -572,6 +572,17 @@
               </div>
               <p>I haven't had the time to run all of the trainings while varying the number of variables. I'm stuck wondering about the best trade off for the preselection cuts. More cuts for faster (with maybe better results?) training but lose information from the cut flows, or fewer cuts with slower training but know what the cuts are doing.</p>
             </li>
+          </li>
+        </div>
+      <hr class="break">
+
+      <button class="collapsible">Week of: Feb 13th, 2022</button>
+        <div class="content">
+          <li>
+            <p>Not research, but I added horizontal scroll bars where it makes sense, and the view should auto adjust if you resize the window too small and things start to overlap. I'll be expecting my degree in web development in the mail soon.</p>
+          </li>
+          <li>
+            <p>Actual work: I fixed the S/sqrt(S+B) calculation and then promptly broke it again. It took a few hours to debug, but the math checks out now at least. Also, what was listed as the 95% CL was showing S/sqrt(B), I fixed that, but now I'm not sure about the number that's being calculated. I need to dig into the CalcCL95 function from the limit_calc folder. It has a parameter called <span class="inline_code">ndata</span> but <span class="inline_code">_bkg->npass</span> is being passed to it.</p>
           </li>
         </div>
       <hr class="break">

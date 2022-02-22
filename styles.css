@@ -83,7 +83,7 @@ hr.break {
 
 .inline_code {
   font-family: 'Courier New', Courier, monospace;
-  /*background-color: lightgray;*/
+  background-color: lightgray;
 }
 
 .update {
@@ -115,7 +115,7 @@ h5.link {
 }
 
 @media screen and (max-width: 1000px) {
-  .column4 {
+  .column3 {
     width: 100%;
   }
 }
@@ -198,7 +198,7 @@ ul.banner li a:hover {
 .content {
   padding: 0 25px;
   max-height: 0;
-  overflow: hidden;
+  overflow: auto;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
 }
